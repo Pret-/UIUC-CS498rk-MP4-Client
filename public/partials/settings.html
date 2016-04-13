@@ -1,16 +1,23 @@
 <div class="list" ng-controller='SettingsController'>		
 	<form>
-	  <div class="row">
-          <div class="small-12 columns">
-            <input ng-model="url" type="text" placeholder="URL">
-          </div>
-      </div>
+		<div class="row">
+		  	<div class="small-12 columns">
+				<h3>Settings</h3>
+				<h6>set your backend URL</h6>
+				<input ng-model="url" type="text" placeholder="URL">
+		  	</div>
+	  	</div>
 
-    <div class="text-center">
-      <button ng-click="setUrl()" class="button tiny info">Set URL</button>
-    </div>
+		<div class="text-center">
+			<button ng-click="setUrl()" class="button tiny info">Set URL</button>
+		</div>
 
-    {{displayText}}
+		<div class="success callout" data-closable ng-show="showText">
+			<h5>{{displayText}}</h5>
+			<button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="showText=false">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 
-  </form>
+  	</form>
 </div>

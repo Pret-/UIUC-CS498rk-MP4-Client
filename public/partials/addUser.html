@@ -1,0 +1,45 @@
+<div ng-controller='AddUserController'>
+
+	<!--Header-->
+	<div class="row">
+		<div class="small-12 columns">
+			<h3>Add User</h3>
+			<h6>our next task-slayer</h6>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12">
+			<form name="addForm" ng-submit="addForm.$valid && submit()" data-abide novalidate>
+				<label>Name <span style="color: red;">*</span>
+					<input ng-model="user.name" type="text" required>
+					<div class="form-error">Name is Required</div>
+				</label>
+				<label>Email <span style="color: red;">*</span>
+					<input ng-model="user.email" type="email" required>
+					<div class="form-error">Email is Required</div>
+				</label>
+				<button class="button" type="submit" value="Submit">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<!--Callouts-->
+	<div class="row">
+		<div class="small-12">
+			<div class="alert callout" data-closable ng-show="fail">
+				<h5>{{error}}</h5>
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="fail=false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="success callout" data-closable ng-show="success">
+				<h5>User Added.</h5>
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="success=false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

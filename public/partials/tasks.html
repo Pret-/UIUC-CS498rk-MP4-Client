@@ -1,0 +1,58 @@
+<div ng-controller='TasksController'>
+
+	<!--Header-->
+	<div class="row">
+		<div class="small-9 columns">
+			<h3>Tasks</h3>
+			<h6>really important stuff</h6>
+		</div>
+		<div class="small-3 columns text-right">
+			<a class="button success" ng-href="#/addTask">New Task</a>
+		</div>
+	</div>
+
+	<!--Buttons and sorting-->
+	<div class="row">
+		<div class="small-4 columns">
+
+			<input type="radio" ng-model="filter" value="pending" ng-change="updateTask()">Pending
+			<input type="radio" ng-model="filter" value="completed" ng-change="updateTask()">Completed
+			<input type="radio" ng-model="filter" value="all" ng-change="updateTask()">All
+
+		</div>
+		<div class="small-4 columns">
+
+			Sort By:
+			<select ng-model="orderType" ng-change="updateTask()" ng-options="option for option in ['dateCreated', 'deadline', 'name', 'assignedUserName']"></select>
+
+		</div>
+		<div class="small-4 columns">
+
+			<input type="radio" ng-model="order" ng-value="false" ng-change="updateTask()" ng-selected>Ascending
+			<input type="radio" ng-model="order" ng-value="true" ng-change="updateTask()">Descending
+
+		</div>
+	</div>
+
+	<!--List of Tasks-->
+	<div class="row">
+		<div class="small-6 columns">
+			<button class="button" ng-disabled="page == 0" ng-click="changePage(page-1)">Previous</button>
+		</div>
+		<div class="small-6 columns text-right">
+			<button class="button right" ng-disabled="page == pages-1" ng-click="changePage(page+1)">Next</button>
+		</div>
+
+		<table>
+			<tbody>
+			<tr ng-repeat="task in tasks">
+				<td><a ng-href="#/tasks/{{task._id}}">{{task.name}}</a></td>
+				<td ng-bind="formatDate(task.deadline)"></td>
+				<td class="text-right"><button ng-click="delete(task)" type="button" class="button alert">Delete</button></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

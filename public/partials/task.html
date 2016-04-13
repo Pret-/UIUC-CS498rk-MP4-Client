@@ -1,0 +1,31 @@
+<div ng-controller='TaskController'>
+	<!--Header-->
+	<div class="row">
+		<div class="small-6 columns">
+			<h3>Task</h3>
+			<h6>gotta get this done</h6>
+		</div>
+		<div class="small-6 columns text-right">
+			<a class="button success" ng-href="#/editTask/{{task._id}}">Edit Task</a>
+		</div>
+	</div>
+
+	<!--Task-->
+	<div class="row">
+		<div class="small-6 columns">
+			<h3>{{task.name}}</h3>
+			<h5>Assigned To: {{task.assignedUserName}}</h5>
+		</div>
+		<div class="small-6 columns">
+			<h4>{{formatDate(task.deadline)}}</h4>
+			<p>Completed: {{task.completed}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<p>{{task.description}}</p>
+		</div>
+	</div>
+
+
+</div>

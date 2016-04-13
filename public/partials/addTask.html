@@ -1,0 +1,54 @@
+<div ng-controller='AddTaskController'>
+
+	<!--Header-->
+	<div class="row">
+		<div class="small-12 columns">
+			<h3>Add Task</h3>
+			<h6>staying occupied</h6>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 large-6 columns">
+			<form name="addForm" ng-submit="addForm.$valid && submit()" data-abide novalidate>
+				<label>Name <span class="red">*</span>
+					<input ng-model="task.name" type="text" required>
+					<span class="form-error">Name is Required</span>
+				</label>
+				<label>Description
+					<input ng-model="task.description" type="text">
+				</label>
+				<label>Deadline <span class="red">*</span>
+					<datepicker>
+						<input ng-model="task.deadline" type="text" required/>
+						<span class="form-error">Deadline is Required</span>
+					</datepicker>
+				</label>
+				<label>Assigned User
+					<select ng-model="selectedUser" ng-change="updateTask()" required
+							ng-options="user as user.name for user in users"></select>
+				</label>
+				<button class="button" type="submit" value="Submit">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<!--Callouts-->
+	<div class="row">
+		<div class="small-12">
+			<div class="alert callout" data-closable ng-show="fail">
+				<h5>{{error}}</h5>
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="fail=false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="success callout" data-closable ng-show="success">
+				<h5>Task Added.</h5>
+				<button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="success=false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
