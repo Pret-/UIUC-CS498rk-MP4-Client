@@ -1,0 +1,56 @@
+<div ng-controller='UserProfileController'>
+	<!--Header-->
+	<div class="row">
+		<div class="small-12 columns">
+			<h3>User Profile</h3>
+			<h6>like facebook but better</h6>
+		</div>
+	</div>
+
+	<!--User name and email-->
+	<div class="row">
+		<div class="small-6 columns"><h4 ng-bind="user.name"></h4></div>
+		<div class="small-6 columns"><h4 ng-bind="user.email"></h4></div>
+	</div>
+
+	<!--Pending Tasks Header-->
+	<div class="row">
+		<div class="small-12 columns">
+			<h3>Pending Tasks</h3>
+		</div>
+	</div>
+
+	<!--List of Pending Tasks-->
+	<div class="row">
+		<div class="small-12 columns">
+			<table>
+				<tbody>
+					<tr ng-repeat="task in pendingTasks">
+						<td><a ng-href="#/tasks/{{task._id}}">{{task.name}}</a></td>
+						<td ng-bind="formatDate(task.deadline)"></td>
+						<td class="text-right"><button ng-click="completeTask(task)" type="button" class="button">Completed</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!--Show Completed Button-->
+	<button class="button" ng-click="showCompletedTasks()">Show Completed Tasks</button>
+
+	<!--Completed Tasks-->
+	<div class="row" ng-show="showCompleted">
+		<div class="small-12 columns">
+			<table>
+				<tbody>
+				<tr ng-repeat="task in completedTasks">
+					<td><a ng-href="#/tasks/{{task._id}}">{{task.name}}</a></td>
+					<td ng-bind="formatDate(task.deadline)"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+</div>
